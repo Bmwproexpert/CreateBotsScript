@@ -33,6 +33,7 @@ async def main():
     await client.send_message(user, "/start")
     for i in range(amount):
         await BotScript.create_bot(client, botcounter, user)
+    print("Script ended")
 
 
 with client:
