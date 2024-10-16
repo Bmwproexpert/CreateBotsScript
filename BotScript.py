@@ -14,7 +14,11 @@ async def create_bot(client: TelegramClient, botcounter: int, user: str):
     wait()
     check_success("Alright, a new bot. How are we going to call it?", await get_last_message(client, user))
     wait()
-    await client.send_message(user, "Nudifier.AI Bot 🍓")
+    try:
+        await client.send_message(user, json.load(open("config_of_bot.json"))["name"])
+    except:
+        print("Something with config_of_bot")
+        sys.exit(1)
     wait()
     check_success("Good. Now let's choose a username for your bot.", await get_last_message(client, user))
     wait()
