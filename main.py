@@ -6,7 +6,7 @@ import sys
 
 def init(config_path: str) -> (str, int, str, str):
     try:
-        config = json.load(open(config_path))
+        config = json.load(open(config_path, encoding='utf-8'))
         name_session = config["name"]
         api_id = int(config["api_id"])
         api_hash = config["api_hash"]
