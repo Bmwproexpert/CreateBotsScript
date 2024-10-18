@@ -15,7 +15,7 @@ async def create_bot(client: TelegramClient, botcounter: int, user: str):
     check_success("Alright, a new bot. How are we going to call it?", await get_last_message(client, user))
     wait()
     try:
-        await client.send_message(user, json.load(open("config_of_bot.json"))["name"])
+        await client.send_message(user, json.load(open("config_of_bot.json", encoding='utf-8'))["name"])
     except:
         print("Something with config_of_bot")
         sys.exit(1)
@@ -60,7 +60,7 @@ async def edit_bot(client: TelegramClient, user: str, botcounter: int):
     await messages[0].click(text=f'Edit About')
     wait()
     try:
-        await client.send_message(user, json.load(open("config_of_bot.json"))["about"])
+        await client.send_message(user, json.load(open("config_of_bot.json", encoding='utf-8'))["about"])
     except:
         print("Problems with config_of_bot.json")
     wait()
@@ -74,7 +74,7 @@ async def edit_bot(client: TelegramClient, user: str, botcounter: int):
     messages = await client.get_messages(user)
     await messages[0].click(text=f'Edit Description')
     wait()
-    await client.send_message(user, json.load(open("config_of_bot.json"))["description"])
+    await client.send_message(user, json.load(open("config_of_bot.json", encoding='utf-8'))["description"])
     wait()
     check_success("Success! Description updated.", await get_last_message(client, user))
     wait()
